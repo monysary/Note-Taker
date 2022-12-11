@@ -6,7 +6,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.listen(3001, () => console.log("Application listening at http://localhost:3001"))
 
-app.get("/api/notes", (req, res) => {
+app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "notes.html"), (err) => 
     err ? console.error(err) : console.log("Path successfully sent to notes.html"))
 })
