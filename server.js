@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const fs = require("fs");
-const { json } = require("express");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
