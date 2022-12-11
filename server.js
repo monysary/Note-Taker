@@ -8,19 +8,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.listen(3001, () => console.log("Application listening at http://localhost:3001"))
 
-// Get request to direct client to index.html page
+// Function to return a random string
+const randomStr = () => {
+    return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+}
+
+// GET request to direct client to index.html page
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"), (err) => 
-    err ? console.error(err) : console.log("Path successfully directed to index.html"))
+    res.sendFile(path.join(__dirname, "public", "index.html"), (err) =>
+        err ? console.error(err) : console.log("Path successfully directed to index.html"))
 })
 
-// Get request to direct client to notes.html page
+// GET request to direct client to notes.html page
 app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "notes.html"), (err) => 
-    err ? console.error(err) : console.log("Path successfully directed to notes.html"))
+    res.sendFile(path.join(__dirname, "public", "notes.html"), (err) =>
+        err ? console.error(err) : console.log("Path successfully directed to notes.html"))
 })
 
-// Get request to return saved notes
+// GET request to return saved notes
 app.get("/api/notes", (req, res) => {
     fs.readFile(path.join(__dirname, "db", "db.json"), (err, data) => {
         if (err) {
@@ -30,3 +37,5 @@ app.get("/api/notes", (req, res) => {
         }
     })
 })
+
+// POST request to add new notes to the database
