@@ -42,8 +42,8 @@ app.get("/api/notes", (req, res) => {
 // POST request to add new notes to the database
 app.post("/api/notes", (req, res) => {
     const { title, text } = req.body;
-    
-    // Assigning the request body to a new object so we can pass in a unique ID
+
+    // Assigning the notes to a new object so we can pass in a unique ID
     const newRequest = {
         title,
         text,
@@ -56,7 +56,15 @@ app.post("/api/notes", (req, res) => {
         } else {
             const parseData = JSON.parse(data);
             parseData.push(newRequest);
-            console.log(parseData);
+
+            // Adding new notes to database
+            fs.writeFile(path.join(__dirname, "db", "db.json"), JSON.stringify(parseData), (err, data) => {
+                if (err) {
+                    console.error("Error: ", err);
+                } else {
+                    console.log("New notes successfully added to Database!");
+                }
+            })
         }
     })
 })
