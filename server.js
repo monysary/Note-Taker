@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+const { json } = require("express");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -39,3 +40,23 @@ app.get("/api/notes", (req, res) => {
 })
 
 // POST request to add new notes to the database
+app.post("/api/notes", (req, res) => {
+    const { title, text } = req.body;
+    
+    // Assigning the request body to a new object so we can pass in a unique ID
+    const newRequest = {
+        title,
+        text,
+        resID: randomStr()
+    }
+
+    fs.readFile(path.join(__dirname, "db", "db.json"), (err, data) => {
+        if (err) {
+            console.error("Error: ", err);
+        } else {
+            const parseData = JSON.parse(data);
+            parseData.push(newRequest);
+            console.log(parseData);
+        }
+    })
+})
