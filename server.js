@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+const { parse } = require("path");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -61,7 +62,28 @@ app.post("/api/notes", (req, res) => {
                 if (err) {
                     console.error("Error: ", err);
                 } else {
-                    console.log("New notes successfully added to Database!");
+                    console.log("New notes successfully added to Database");
+                }
+            })
+        }
+    })
+})
+
+app.delete("/api/notes/:id", (req, res) => {
+    fs.readFile(path.join(__dirname, "db", "db.json"), (err, data) => {
+        if (err) {
+            console.error(err);
+        } else {
+            const parseData = JSON.parse(data);
+            // const newData = parseData.find(obj => obj.id === req.params.id);
+            filterData = parseData.filter((obj) => {
+                return obj.id !== req.params.id
+            });
+            fs.writeFile(path.join(__dirname, "db", "db.json"), JSON.stringify(filterData), (err, data) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log("Notes deleted from database");
                 }
             })
         }

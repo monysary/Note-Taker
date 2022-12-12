@@ -1,12 +1,1 @@
-[
-    {
-        "title": "New notes 1",
-        "text": "something text",
-        "id": "4154"
-    },
-    {
-        "title": "second notes",
-        "text": "something",
-        "id": "412b"
-    }
-]
+[{"title":"second notes","text":"something","id":"412b"},{"title":"new notes 2","text":"text 2","id":"3268"},{"title":"new notes 3","text":"text 3","id":"0505"}]
