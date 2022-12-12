@@ -56,6 +56,7 @@ app.post("/api/notes", (req, res) => {
                 if (err) {
                     console.error("Error: ", err);
                 } else {
+                    res.json(data);
                     console.log("New notes successfully added to Database");
                 }
             });
@@ -79,6 +80,7 @@ app.delete("/api/notes/:id", (req, res) => {
                 if (err) {
                     console.error(err);
                 } else {
+                    res.json(data);
                     console.log("Note deleted from database");
                 }
             });
