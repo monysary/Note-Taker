@@ -75,6 +75,9 @@ const handleNoteSave = () => {
     getAndRenderNotes();
     renderActiveNote();
   });
+
+  // Reloads page to show updated fetch
+  location.reload();
 };
 
 // Delete the clicked note
@@ -93,6 +96,9 @@ const handleNoteDelete = (e) => {
     getAndRenderNotes();
     renderActiveNote();
   });
+
+  // Reloads page to show updated fetch
+  location.reload();
 };
 
 // Sets the activeNote and displays it

@@ -64,28 +64,30 @@ app.post("/api/notes", (req, res) => {
                 } else {
                     console.log("New notes successfully added to Database");
                 }
-            })
+            });
         }
     })
 })
 
+// DELETE request to remove saved notes when user clicks delete next to the note
 app.delete("/api/notes/:id", (req, res) => {
     fs.readFile(path.join(__dirname, "db", "db.json"), (err, data) => {
         if (err) {
             console.error(err);
         } else {
             const parseData = JSON.parse(data);
-            // const newData = parseData.find(obj => obj.id === req.params.id);
             filterData = parseData.filter((obj) => {
                 return obj.id !== req.params.id
             });
+
+            // Replace notes in database with removed note
             fs.writeFile(path.join(__dirname, "db", "db.json"), JSON.stringify(filterData), (err, data) => {
                 if (err) {
                     console.error(err);
                 } else {
                     console.log("Notes deleted from database");
                 }
-            })
+            });
         }
     })
 })
