@@ -1,16 +1,12 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
+        "title": "New notes 1",
+        "text": "something text",
+        "id": "4154"
     },
     {
-        "title": "new notes",
-        "text": "some notes",
-        "resID": "cce8"
-    },
-    {
-        "title": "new notes",
-        "text": "some notes",
-        "resID": "74f5"
+        "title": "second notes",
+        "text": "something",
+        "id": "412b"
     }
 ]

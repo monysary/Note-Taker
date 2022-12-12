@@ -46,7 +46,7 @@ app.post("/api/notes", (req, res) => {
     const newRequest = {
         title,
         text,
-        resID: randomStr()
+        id: randomStr()
     }
 
     fs.readFile(path.join(__dirname, "db", "db.json"), (err, data) => {
