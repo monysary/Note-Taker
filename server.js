@@ -15,11 +15,9 @@ const randomStr = () => {
     .substring(1);
 }
 
-// GET request to direct client to notes.html page
-app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "notes.html"), (err) =>
-    err ? console.error(err) : console.log("Path successfully directed to notes.html"))
-})
+const htmlRouter = require(path.join(__dirname, "routes", "HTMLroutes.js"));
+
+app.use("/", htmlRouter);
 
 // GET request to return saved notes
 app.get("/api/notes", (req, res) => {
@@ -57,7 +55,7 @@ app.post("/api/notes", (req, res) => {
                     console.error("Error: ", err);
                 } else {
                     res.json(data);
-                    console.log("New notes successfully added to Database");
+                    console.log("New notes successfully added to database");
                 }
             });
         }
@@ -88,10 +86,5 @@ app.delete("/api/notes/:id", (req, res) => {
     })
 })
 
-// GET request to direct client to index.html page
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"), (err) =>
-    err ? console.error(err) : console.log("Path successfully directed to index.html"))
-})
-
+// Application listening on port 3001
 app.listen(3001, () => console.log("Application listening at http://localhost:3001"))
