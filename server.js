@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
+// Setting up port
+const PORT = process.env.PORT || 3001
+
 // Setting up middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,4 +18,4 @@ app.use("/api", apiRouter);
 app.use("/", htmlRouter);
 
 // Application listening on port 3001
-app.listen(3001, () => console.log("Application listening at http://localhost:3001"))
+app.listen(PORT, () => console.log(`Application listening at http://localhost:${PORT}`))
