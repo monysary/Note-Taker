@@ -8,7 +8,7 @@ Install dependencies by running the following command in terminal:
 ```
 npm i
 ```
-The Note Taker app can be accessed at the following link:
+The Note Taker app can be accessed at the following link: https://mysterious-dawn-00819.herokuapp.com/
 
 ## Usage
 When users visit the webpage, they are taken to a landing page and presented with an option to navigate to their notes page. Once in the notes page, the user is presented with their past saved notes on the left column and the option to enter new notes on the right. Clicking on a past saved note will populate their saved note on the right column. Selecting the '+' symbol on the top right of the page allows the user to clear the entry and enter new notes. Past saved notes can be deleted by clicking on the red trashcan icon next to their specific saved note.
