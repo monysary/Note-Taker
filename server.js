@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const fs = require("fs");
 
 // Setting up middleware
 app.use(express.json());

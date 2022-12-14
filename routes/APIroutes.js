@@ -45,7 +45,7 @@ router.post("/notes", (req, res) => {
                     console.error("Error: ", err);
                 } else {
                     res.json(data);
-                    console.log("New notes successfully added to database");
+                    console.log("New note added to database");
                 }
             });
         }
